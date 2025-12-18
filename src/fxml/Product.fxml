@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml/1"
+      xmlns="http://javafx.com/javafx/24.0.1"
+      fx:controller="controller.ProductController"
+      style="-fx-background-color: #f5f5f5;">
+
+    <!-- MENU BAR -->
+    <MenuBar style="-fx-background-color: #ecf0f1; -fx-border-color: #bdc3c7; -fx-border-width: 0 0 1 0;">
+        <menus>
+            <Menu text="Manage" style="-fx-text-fill: #2c3e50;">
+                <items>
+                    <MenuItem text="Categories" onAction="#openCategoryWindow"/>
+                    <MenuItem text="Suppliers" onAction="#openSupplierWindow"/>
+                </items>
+            </Menu>
+            <Menu text="Help" style="-fx-text-fill: #2c3e50;">
+                <items><MenuItem text="About"/></items>
+            </Menu>
+        </menus>
+    </MenuBar>
+
+    <!-- MAIN CONTENT -->
+    <ScrollPane fitToWidth="true" VBox.vgrow="ALWAYS"
+                style="-fx-background: #f5f5f5; -fx-border-color: transparent;">
+        
+        <VBox spacing="20" style="-fx-padding: 20;">
+            
+            <!-- Title -->
+            <Label text="Product Management" 
+                   style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+
+            <!-- FORM CONTAINER -->
+            <VBox spacing="15" style="-fx-background-color: white; -fx-padding: 25; -fx-background-radius: 8;">
+                
+                <!-- Basic Information Section -->
+                <Label text="Basic Information" 
+                       style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #34495e; -fx-padding: 0 0 10 0;"/>
+                
+                <GridPane hgap="15" vgap="12">
+                    <columnConstraints>
+                        <ColumnConstraints minWidth="120" prefWidth="120"/>
+                        <ColumnConstraints hgrow="ALWAYS" minWidth="200"/>
+                        <ColumnConstraints minWidth="120" prefWidth="120"/>
+                        <ColumnConstraints hgrow="ALWAYS" minWidth="200"/>
+                    </columnConstraints>
+
+                    <!-- Row 1 -->
+                    <Label text="Name:" GridPane.rowIndex="0" GridPane.columnIndex="0"
+                           style="-fx-font-weight: bold;"/>
+                    <TextField fx:id="txtName" GridPane.rowIndex="0" GridPane.columnIndex="1"
+                               style="-fx-padding: 8;"/>
+                    <Label text="Description:" GridPane.rowIndex="0" GridPane.columnIndex="2"
+                           style="-fx-font-weight: bold;"/>
+                    <TextField fx:id="txtDescription" GridPane.rowIndex="0" GridPane.columnIndex="3"
+                               style="-fx-padding: 8;"/>
+
+                    <!-- Row 2 -->
+                    <Label text="Category:" GridPane.rowIndex="1" GridPane.columnIndex="0"
+                           style="-fx-font-weight: bold;"/>
+                    <ComboBox fx:id="cbCategory" GridPane.rowIndex="1" GridPane.columnIndex="1"
+                              style="-fx-padding: 8;"/>
+                    <Label text="Supplier:" GridPane.rowIndex="1" GridPane.columnIndex="2"
+                           style="-fx-font-weight: bold;"/>
+                    <ComboBox fx:id="cbSupplier" GridPane.rowIndex="1" GridPane.columnIndex="3"
+                              style="-fx-padding: 8;"/>
+                </GridPane>
+
+                <Separator style="-fx-padding: 10 0;"/>
+
+                <!-- Product Identification Section -->
+                <Label text="Product Identification" 
+                       style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #34495e; -fx-padding: 10 0 10 0;"/>
+                
+                <GridPane hgap="15" vgap="12">
+                    <columnConstraints>
+                        <ColumnConstraints minWidth="120" prefWidth="120"/>
+                        <ColumnConstraints hgrow="ALWAYS" minWidth="200"/>
+                        <ColumnConstraints minWidth="120" prefWidth="120"/>
+                        <ColumnConstraints hgrow="ALWAYS" minWidth="200"/>
+                    </columnConstraints>
+
+                    <!-- Row 1 -->
+                    <Label text="SKU:" GridPane.rowIndex="0" GridPane.columnIndex="0"
+                           style="-fx-font-weight: bold;"/>
+                    <TextField fx:id="txtSku" GridPane.rowIndex="0" GridPane.columnIndex="1"
+                               style="-fx-padding: 8;"/>
+                    <Label text="Barcode:" GridPane.rowIndex="0" GridPane.columnIndex="2"
+                           style="-fx-font-weight: bold;"/>
+                    <TextField fx:id="txtBarcode" GridPane.rowIndex="0" GridPane.columnIndex="3"
+                               style="-fx-padding: 8;"/>
+                </GridPane>
+
+                <Separator style="-fx-padding: 10 0;"/>
+
+                <!-- Inventory and Tracking Section -->
+                <Label text="Inventory &amp; Tracking" 
+                       style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #34495e; -fx-padding: 10 0 10 0;"/>
+                
+                <GridPane hgap="15" vgap="12">
+                    <columnConstraints>
+                        <ColumnConstraints minWidth="120" prefWidth="120"/>
+                        <ColumnConstraints hgrow="ALWAYS" minWidth="200"/>
+                        <ColumnConstraints minWidth="120" prefWidth="120"/>
+                        <ColumnConstraints hgrow="ALWAYS" minWidth="200"/>
+                    </columnConstraints>
+
+                    <!-- Row 1 -->
+                    <Label text="Inventory Tracking:" GridPane.rowIndex="0" GridPane.columnIndex="0"
+                           style="-fx-font-weight: bold;"/>
+                    <ComboBox fx:id="cbInventoryTracking" GridPane.rowIndex="0" GridPane.columnIndex="1"
+                              style="-fx-padding: 8;"/>
+                    <Label text="Base Unit:" GridPane.rowIndex="0" GridPane.columnIndex="2"
+                           style="-fx-font-weight: bold;"/>
+                    <TextField fx:id="txtBaseUnit" GridPane.rowIndex="0" GridPane.columnIndex="3"
+                               promptText="e.g., piece, kg, liter"
+                               style="-fx-padding: 8;"/>
+
+                    <!-- Row 2 -->
+                    <Label text="Initial Stock:" GridPane.rowIndex="1" GridPane.columnIndex="0"
+                           style="-fx-font-weight: bold;"/>
+                    <TextField fx:id="txtInitialStock" GridPane.rowIndex="1" GridPane.columnIndex="1"
+                               style="-fx-padding: 8;"/>
+                    <Label text="Current Stock:" GridPane.rowIndex="1" GridPane.columnIndex="2"
+                           style="-fx-font-weight: bold;"/>
+                    <TextField fx:id="txtCurrentStock" GridPane.rowIndex="1" GridPane.columnIndex="3"
+                               style="-fx-padding: 8;"/>
+
+                    <!-- Row 3 -->
+                    <Label text="Reorder Level:" GridPane.rowIndex="2" GridPane.columnIndex="0"
+                           style="-fx-font-weight: bold;"/>
+                    <TextField fx:id="txtReorderLevel" GridPane.rowIndex="2" GridPane.columnIndex="1"
+                               style="-fx-padding: 8;"/>
+                </GridPane>
+
+                <Separator style="-fx-padding: 10 0;"/>
+
+                <!-- Pricing Section -->
+                <Label text="Pricing" 
+                       style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #34495e; -fx-padding: 10 0 10 0;"/>
+                
+                <GridPane hgap="15" vgap="12">
+                    <columnConstraints>
+                        <ColumnConstraints minWidth="120" prefWidth="120"/>
+                        <ColumnConstraints hgrow="ALWAYS" minWidth="200"/>
+                        <ColumnConstraints minWidth="120" prefWidth="120"/>
+                        <ColumnConstraints hgrow="ALWAYS" minWidth="200"/>
+                    </columnConstraints>
+
+                    <!-- Row 1 -->
+                    <Label text="Price:" GridPane.rowIndex="0" GridPane.columnIndex="0"
+                           style="-fx-font-weight: bold;"/>
+                    <TextField fx:id="txtPrice" GridPane.rowIndex="0" GridPane.columnIndex="1"
+                               style="-fx-padding: 8;"/>
+                    <Label text="Cost:" GridPane.rowIndex="0" GridPane.columnIndex="2"
+                           style="-fx-font-weight: bold;"/>
+                    <TextField fx:id="txtCost" GridPane.rowIndex="0" GridPane.columnIndex="3"
+                               style="-fx-padding: 8;"/>
+                </GridPane>
+
+                <Separator style="-fx-padding: 10 0;"/>
+
+                <!-- Product Configuration Section -->
+                <Label text="Product Configuration" 
+                       style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #34495e; -fx-padding: 10 0 10 0;"/>
+                
+                <GridPane hgap="15" vgap="12">
+                    <columnConstraints>
+                        <ColumnConstraints minWidth="120" prefWidth="120"/>
+                        <ColumnConstraints hgrow="ALWAYS" minWidth="200"/>
+                        <ColumnConstraints minWidth="120" prefWidth="120"/>
+                        <ColumnConstraints hgrow="ALWAYS" minWidth="200"/>
+                    </columnConstraints>
+
+                    <!-- Row 1 -->
+                    <Label text="Product Type:" GridPane.rowIndex="0" GridPane.columnIndex="0"
+                           style="-fx-font-weight: bold;"/>
+                    <ComboBox fx:id="cbProductType" GridPane.rowIndex="0" GridPane.columnIndex="1"
+                              style="-fx-padding: 8;"/>
+                    <Label text="Status:" GridPane.rowIndex="0" GridPane.columnIndex="2"
+                           style="-fx-font-weight: bold;"/>
+                    <HBox spacing="10" GridPane.rowIndex="0" GridPane.columnIndex="3" 
+                          alignment="CENTER_LEFT" style="-fx-padding: 8 0;">
+                        <CheckBox fx:id="chkIsActive" text="Active" selected="true"/>
+                    </HBox>
+
+                    <!-- Row 2 -->
+                    <Label text="Image URL:" GridPane.rowIndex="1" GridPane.columnIndex="0"
+                           style="-fx-font-weight: bold;"/>
+                    <TextField fx:id="txtImage" GridPane.rowIndex="1" GridPane.columnIndex="1"
+                               promptText="Image URL or file path"
+                               GridPane.columnSpan="3"
+                               style="-fx-padding: 8;"/>
+                </GridPane>
+
+                <!-- BUTTONS -->
+                <HBox alignment="CENTER" spacing="15" style="-fx-padding: 20 0 0 0;">
+                    <Button text="Add" onAction="#addProduct" 
+                            prefWidth="120" prefHeight="35"/>
+                    <Button text="Update" onAction="#updateProduct" 
+                            prefWidth="120" prefHeight="35"/>
+                    <Button text="Delete" onAction="#deleteProduct" 
+                            prefWidth="120" prefHeight="35"/>
+                    <Button text="Clear" onAction="#clearForm" 
+                            prefWidth="120" prefHeight="35"/>
+                </HBox>
+            </VBox>
+
+            <!-- TABLE -->
+            <VBox spacing="10" style="-fx-background-color: white; -fx-padding: 25; -fx-background-radius: 8;">
+                <HBox spacing="10" alignment="CENTER_LEFT">
+                    <Label text="Product List" 
+                           style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #34495e;"/>
+                    <Region HBox.hgrow="ALWAYS"/>
+                    <Label text="Product Options:" 
+                           style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #34495e;"/>
+                    <Button text="Variants" onAction="#openVariantWindow" 
+                            prefWidth="100" prefHeight="30"/>
+                    <Button text="Modifiers" onAction="#openModifierWindow" 
+                            prefWidth="100" prefHeight="30"/>
+                    <Button text="Bundles" onAction="#openBundleWindow" 
+                            prefWidth="100" prefHeight="30"/>
+                </HBox>
+                <TableView fx:id="tableProducts" VBox.vgrow="ALWAYS">
+                    <columns>
+                        <TableColumn fx:id="colId" text="ID" minWidth="50" maxWidth="80"/>
+                        <TableColumn fx:id="colName" text="Name" minWidth="150" prefWidth="200"/>
+                        <TableColumn fx:id="colDescription" text="Description" minWidth="150" prefWidth="250"/>
+                        <TableColumn fx:id="colCategory" text="Category" minWidth="100" maxWidth="150"/>
+                        <TableColumn fx:id="colPrice" text="Price" minWidth="80" maxWidth="100"/>
+                        <TableColumn fx:id="colCurrentStock" text="Stock" minWidth="70" maxWidth="100"/>
+                        <TableColumn fx:id="colIsActive" text="Active" minWidth="60" maxWidth="80"/>
+                    </columns>
+                </TableView>
+            </VBox>
+
+        </VBox>
+    </ScrollPane>
+
+</VBox>

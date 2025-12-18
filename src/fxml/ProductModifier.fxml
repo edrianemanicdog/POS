@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ProductModifierController">
+
+    <VBox spacing="15" AnchorPane.bottomAnchor="10" AnchorPane.leftAnchor="10" AnchorPane.rightAnchor="10" AnchorPane.topAnchor="10">
+
+        <!-- Form Section -->
+        <VBox spacing="10">
+            <Label style="-fx-font-size: 22px; -fx-font-weight: bold;" text="Product Modifier Management" />
+
+            <GridPane hgap="15" vgap="10">
+                <columnConstraints>
+                    <ColumnConstraints percentWidth="25" />
+                    <ColumnConstraints percentWidth="75" />
+                </columnConstraints>
+
+                <!-- Product -->
+                <Label text="Product:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                <ComboBox fx:id="cbProduct" maxHeight="30.0" minHeight="30.0" prefHeight="30.0" GridPane.columnIndex="1" GridPane.rowIndex="0" GridPane.hgrow="ALWAYS" />
+
+                <!-- Name -->
+                <Label text="Modifier Name:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                <TextField fx:id="txtName" maxHeight="30.0" minHeight="30.0" prefHeight="30.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+
+                <!-- Type -->
+                <Label text="Type:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+                <ComboBox fx:id="cbType" maxHeight="30.0" minHeight="30.0" prefHeight="30.0" GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.hgrow="ALWAYS" />
+
+                <!-- Required -->
+                <Label text="Required:" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+                <CheckBox fx:id="chkRequired" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <rowConstraints>
+               <RowConstraints />
+               <RowConstraints />
+               <RowConstraints />
+               <RowConstraints />
+            </rowConstraints>
+            </GridPane>
+
+            <!-- Buttons -->
+            <HBox alignment="CENTER_LEFT" spacing="15">
+                <Button onAction="#addModifier" prefWidth="100" text="Add" />
+                <Button onAction="#updateModifier" prefWidth="100" text="Update" />
+                <Button onAction="#deleteModifier" prefWidth="100" text="Delete" />
+                <Button onAction="#clearForm" prefWidth="100" text="Clear" />
+            </HBox>
+        </VBox>
+
+        <!-- Table Section -->
+        <TableView fx:id="tableModifiers" prefHeight="200">
+            <columns>
+                <TableColumn fx:id="colId" prefWidth="50" text="ID" />
+                <TableColumn fx:id="colProduct" prefWidth="150" text="Product" />
+                <TableColumn fx:id="colName" prefWidth="200" text="Name" />
+                <TableColumn fx:id="colType" prefWidth="100" text="Type" />
+                <TableColumn fx:id="colRequired" prefWidth="100" text="Required" />
+            </columns>
+        </TableView>
+
+        <Separator />
+
+        <!-- Modifier Options Section -->
+        <VBox spacing="10">
+            <Label style="-fx-font-size: 18px; -fx-font-weight: bold;" text="Modifier Options" />
+            
+            <GridPane hgap="15" vgap="10">
+                <columnConstraints>
+                    <ColumnConstraints percentWidth="25" />
+                    <ColumnConstraints percentWidth="75" />
+                </columnConstraints>
+
+                <Label text="Modifier:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                <ComboBox fx:id="cbModifierForOption" editable="false" maxHeight="30.0" minHeight="30.0" prefHeight="30.0" GridPane.columnIndex="1" GridPane.rowIndex="0" GridPane.hgrow="ALWAYS" />
+
+                <Label text="Option Name:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                <TextField fx:id="txtOptionName" maxHeight="30.0" minHeight="30.0" prefHeight="30.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+
+                <Label text="Price:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+                <TextField fx:id="txtOptionPrice" maxHeight="30.0" minHeight="30.0" prefHeight="30.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <rowConstraints>
+               <RowConstraints />
+               <RowConstraints />
+               <RowConstraints />
+            </rowConstraints>
+            </GridPane>
+
+            <HBox alignment="CENTER_LEFT" spacing="15">
+                <Button onAction="#addModifierOption" prefWidth="120" text="Add Option" />
+                <Button onAction="#updateModifierOption" prefWidth="120" text="Update Option" />
+                <Button onAction="#deleteModifierOption" prefWidth="120" text="Delete Option" />
+                <Button onAction="#clearOptionForm" prefWidth="120" text="Clear Options" />
+            </HBox>
+
+            <TableView fx:id="tableModifierOptions" prefHeight="200" VBox.vgrow="ALWAYS">
+                <columns>
+                    <TableColumn fx:id="colOptionId" prefWidth="50" text="ID" />
+                    <TableColumn fx:id="colOptionModifier" prefWidth="150" text="Modifier" />
+                    <TableColumn fx:id="colOptionName" prefWidth="150" text="Name" />
+                    <TableColumn fx:id="colOptionPrice" prefWidth="80" text="Price" />
+                </columns>
+            </TableView>
+        </VBox>
+
+    </VBox>
+
+</AnchorPane>

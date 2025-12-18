@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/24.0.1" fx:controller="controller.ProductVariantController">
+
+    <VBox spacing="15" AnchorPane.topAnchor="10" AnchorPane.leftAnchor="10" AnchorPane.rightAnchor="10" AnchorPane.bottomAnchor="10">
+
+        <Label style="-fx-font-size: 22px; -fx-font-weight: bold;" text="Product Variant Management"/>
+
+        <GridPane hgap="15" vgap="10">
+            <Label text="Product:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+            <ComboBox fx:id="cbProduct" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+            <Label text="Name:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+            <TextField fx:id="txtName" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+            <Label text="SKU:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+            <TextField fx:id="txtSKU" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+
+            <Label text="Barcode:" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+            <TextField fx:id="txtBarcode" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+
+            <Label text="Price:" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+            <TextField fx:id="txtPrice" GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+
+            <Label text="Cost:" GridPane.rowIndex="5" GridPane.columnIndex="0"/>
+            <TextField fx:id="txtCost" GridPane.rowIndex="5" GridPane.columnIndex="1"/>
+
+            <Label text="Stock:" GridPane.rowIndex="6" GridPane.columnIndex="0"/>
+            <TextField fx:id="txtStock" GridPane.rowIndex="6" GridPane.columnIndex="1"/>
+
+            <Label text="Attributes (JSON):" GridPane.rowIndex="7" GridPane.columnIndex="0"/>
+            <TextField fx:id="txtAttributes" GridPane.rowIndex="7" GridPane.columnIndex="1"/>
+        </GridPane>
+
+        <HBox spacing="15" alignment="CENTER_LEFT">
+            <Button text="Add" onAction="#addVariant" prefWidth="100"/>
+            <Button text="Update" onAction="#updateVariant" prefWidth="100"/>
+            <Button text="Delete" onAction="#deleteVariant" prefWidth="100"/>
+            <Button text="Clear" onAction="#clearForm" prefWidth="100"/>
+        </HBox>
+
+        <TableView fx:id="tableVariants" prefHeight="400" VBox.vgrow="ALWAYS">
+            <columns>
+                <TableColumn fx:id="colId" text="ID" prefWidth="50"/>
+                <TableColumn fx:id="colProduct" text="Product" prefWidth="150"/>
+                <TableColumn fx:id="colName" text="Name" prefWidth="150"/>
+                <TableColumn fx:id="colSKU" text="SKU" prefWidth="100"/>
+                <TableColumn fx:id="colBarcode" text="Barcode" prefWidth="100"/>
+                <TableColumn fx:id="colPrice" text="Price" prefWidth="80"/>
+                <TableColumn fx:id="colCost" text="Cost" prefWidth="80"/>
+                <TableColumn fx:id="colStock" text="Stock" prefWidth="80"/>
+                <TableColumn fx:id="colAttributes" text="Attributes" prefWidth="200"/>
+            </columns>
+        </TableView>
+
+    </VBox>
+
+</AnchorPane>
