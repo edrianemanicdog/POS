@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="controller.CashierDashboardController"
+            fx:id="cashierDashboardRoot"
+            prefWidth="800" prefHeight="500">
+
+
+    <top>
+        <HBox style="-fx-background-color: #2C3E50;" prefHeight="60" alignment="CENTER_LEFT">
+            <children>
+                <Label fx:id="welcomeLabel" text="Welcome, User"
+                       style="-fx-text-fill: white; -fx-font-size: 18px; -fx-font-weight: bold;">
+                    <padding>
+                        <Insets top="0" right="0" bottom="0" left="20"/>
+                    </padding>
+                </Label>
+            </children>
+        </HBox>
+    </top>
+
+    <left>
+        <VBox spacing="15" style="-fx-background-color: #34495E;" prefWidth="200" alignment="TOP_CENTER">
+            <padding>
+                <Insets top="20" right="20" bottom="20" left="20"/>
+            </padding>
+            <children>
+                <Button text="POS" prefWidth="150" onAction="#openPOS"/>
+                <Button text="Logout" prefWidth="150" onAction="#logout"/>
+            </children>
+        </VBox>
+    </left>
+
+    <center>
+    <AnchorPane fx:id="centerPane">
+        <!-- POS will be loaded here by default -->
+    </AnchorPane>
+</center>
+
+
+</BorderPane>
+

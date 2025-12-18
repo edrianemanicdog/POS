@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1"
+            xmlns="http://javafx.com/javafx/24.0.1"
+            fx:controller="controller.ReportsController">
+    
+    <VBox spacing="15" style="-fx-padding: 20;" 
+          AnchorPane.topAnchor="0" AnchorPane.bottomAnchor="0" 
+          AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0">
+        
+        <Label text="Sales Reports" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #0d5c67;" />
+        
+        <!-- Filter Section -->
+        <HBox spacing="15" alignment="CENTER_LEFT" style="-fx-background-color: #f0f0f0; -fx-background-radius: 5; -fx-padding: 15;">
+            <Label text="Report Period:" style="-fx-font-size: 14px; -fx-font-weight: bold;" />
+            
+            <Label text="From:" style="-fx-font-size: 14px;" />
+            <DatePicker fx:id="startDatePicker" style="-fx-background-radius: 5;" />
+            
+            <Label text="To:" style="-fx-font-size: 14px;" />
+            <DatePicker fx:id="endDatePicker" style="-fx-background-radius: 5;" />
+            
+            <Button text="Daily Report" onAction="#generateDailyReport"
+                    style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-background-radius: 5; -fx-padding: 8 20;" />
+            <Button text="Monthly Report" onAction="#generateMonthlyReport"
+                    style="-fx-background-color: #9b59b6; -fx-text-fill: white; -fx-background-radius: 5; -fx-padding: 8 20;" />
+            <Button text="Custom Range" onAction="#generateCustomReport"
+                    style="-fx-background-color: #3399d9; -fx-text-fill: white; -fx-background-radius: 5; -fx-padding: 8 20;" />
+            <Button text="All Sales" onAction="#loadAllSales"
+                    style="-fx-background-color: #95a5a6; -fx-text-fill: white; -fx-background-radius: 5; -fx-padding: 8 20;" />
+        </HBox>
+        
+        <!-- Summary Statistics -->
+        <HBox spacing="20" style="-fx-background-color: #e8f4f8; -fx-background-radius: 5; -fx-padding: 15;">
+            <VBox spacing="5">
+                <Label text="Total Transactions:" style="-fx-font-size: 14px; -fx-text-fill: #7f8c8d;" />
+                <Label fx:id="transactionsCountLabel" text="0" style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;" />
+            </VBox>
+            <VBox spacing="5">
+                <Label text="Total Sales:" style="-fx-font-size: 14px; -fx-text-fill: #7f8c8d;" />
+                <Label fx:id="totalSalesLabel" text="₱0.00" style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #27ae60;" />
+            </VBox>
+            <VBox spacing="5">
+                <Label text="Total Items Sold:" style="-fx-font-size: 14px; -fx-text-fill: #7f8c8d;" />
+                <Label fx:id="totalItemsLabel" text="0" style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;" />
+            </VBox>
+            <VBox spacing="5">
+                <Label text="Average Sale:" style="-fx-font-size: 14px; -fx-text-fill: #7f8c8d;" />
+                <Label fx:id="averageSaleLabel" text="₱0.00" style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #e67e22;" />
+            </VBox>
+            <Region HBox.hgrow="ALWAYS" />
+            <VBox spacing="10">
+                <Button text="Export to CSV" onAction="#exportToCSV"
+                        style="-fx-background-color: #27ae60; -fx-text-fill: white; -fx-background-radius: 5; -fx-padding: 10 20; -fx-font-size: 14px;" />
+            </VBox>
+        </HBox>
+        
+        <!-- Reports Table -->
+        <TableView fx:id="reportsTable" VBox.vgrow="ALWAYS" prefHeight="400">
+            <columns>
+                <TableColumn fx:id="colReportId" text="Sale ID" prefWidth="80" />
+                <TableColumn fx:id="colReportDate" text="Date &amp; Time" prefWidth="180" />
+                <TableColumn fx:id="colReportAmount" text="Amount" prefWidth="120" />
+                <TableColumn fx:id="colReportItems" text="Items" prefWidth="80" />
+                <TableColumn fx:id="colReportCashier" text="Cashier" prefWidth="200" />
+            </columns>
+        </TableView>
+    </VBox>
+</AnchorPane>
+
